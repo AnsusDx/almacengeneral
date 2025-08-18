@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Refacciones Estratégicas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favi.png" type="image/png"> <!-- Ícono de herramienta -->
+    <style>
+        body {
+            position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* si quieres centrar contenido */
+  background-color: #152e56;
+  background-image: url('ALMACENGENERAL3.png'); /* aquí va la imagen */
+  background-size: cover;    /* hace que la imagen cubra todo */
+  background-position: center; /* centra la imagen */
+  background-repeat: no-repeat;
+  height: 100vh;
+            
+        }
+        .logo-esquina {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 300px; /* o el tamaño que quieras */
+            z-index: 1000; /* opcional: asegura que esté por encima del contenido */
+        }
+       .texto-animado {
+        position: absolute;
+      font-size: 40px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffd21f;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      bottom: 42px;
+    }
+    .texto-animado:hover {
+      transform: scale(1.2);
+      text-shadow: 0 0 10px #000000, 0 0 20px rgb(29, 162, 206), 0 0 30px rgb(230, 236, 76);
+    }
+    .almacen {
+      font-size: 220px;
+      display: block;
+     
+        line-height: 0.5;
+    }
+    .general {
+      color: white;
+      font-size: 65px;
+      display: block;
+      
+        line-height: 0.5;
+    }           
+        
+     .lower-third {
+      position: absolute;
+      bottom: 670px;
+      left: 0;
+      transform: translateX(-100%);
+      animation: slideInRight 1s ease-out forwards;
+    }
+
+    .lower-third img {
+      height: 50px; /* ajusta según el tamaño que quieras */
+      border-radius: 0 0px 0px 0;
+    }
+
+    @keyframes slideInRight {
+      to {
+        transform: translateX(0);
+      }
+    }
+.puntos {
+      position: fixed;
+      bottom: 663px;
+      right: 90px;
+      font-size: 90px;
+      color: white;
+      cursor: pointer;
+      transition: color 0.3s ease;
+      font-weight: bold;
+      user-select: none;
+      text-decoration: none; /* elimina el subrayado */
+    }
+
+    .puntos:hover {
+      color: #ffd21f;
+    }
+
+    </style>
+    <!--<img src="constellationbrandss.png" alt="Logo" class="logo-esquina">-->
+    <!--<img src="almacen.png" alt="Logo" class="logo-centro" class="logo-centro:hover">-->
+    
+</head>
+<body>
+    
+<video autoplay muted loop class="contenedor">
+        <source src="VIDEOALMACEN.mp4" type="video/mp4">
+        Tu navegador no soporta HTML5.
+    </video>
+<div class="lower-third">
+<img src="CONSTELLATIONBRANDS.png" alt="Lower Third" />
+</div>
+    <h1 class="texto-animado" onclick="window.location.href='index4.html'">
+        <span class="almacen">ALMACEN</span><br>
+       <span class="general">GENERAL</span>
+        <span class="tooltiptext">22,000 SKU´s</span>
+    </h2>
+
+    <!--<div class="contenedores-inferiores">
+        <div class="contenedor-inferior">
+            <a href="index3.html" target="_blank">Catálogo</a>
+        </div>
+        <div class="contenedor-inferior">
+            <a href="index_ubicacion.html" target="_blank">Ubicación</a>
+        </div>
+        <div class="contenedor-inferior">
+            <a href="Index_sap.html" target="_blank">Políticas de inventario de refacciones estratégicas en SAP</a>
+        </div>
+    </div>-->
+    <!--BOTONES-->
+ <div class="contenedorbotones">
+        <a href="index3.html" class="btn btn-2">Catálogo
+            <span></span>
+            <span></span>
+        </a>
+        <a href="index_ubicacion.html" class="btn btn-2">Ubicación
+            <span></span>
+            <span></span>
+        </a>
+        <a href="Index_sap.html" class="btn btn-2">Políticas
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+    <div>
+        <a href="PRUEBALATA.html" class="puntos">...</a></div>
+</body>
+</html>
