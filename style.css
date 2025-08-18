@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --color: rgba(255, 221, 51, 0.8);
+}
+
+/* Reset de márgenes y configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hace que el cuerpo ocupe toda la pantalla */
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+/* Contenedor principal con video de fondo */
+.contenedor {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;    
+    object-fit: cover;
+}
+
+/* Contenedor de los cuadros inferiores */
+.contenedores-inferiores {
+    position: fixed; /* Fija los contenedores en la pantalla */
+    bottom: 50px; /* Ajusta la distancia desde la parte inferior */
+    right: 300px; /* Ajusta la distancia desde la parte derecha */
+    display: flex;
+    flex-direction: column; /* Organiza los cuadros verticalmente */
+    gap: 10px; /* Espaciado entre los cuadros */
+}
+
+/* Estilos de los cuadros inferiores */
+.contenedor-inferior {
+    width: 300px; /* Ancho del cuadro */
+    height: 40px; /* Alto del cuadro */
+    background-color: rgba(9, 41, 61, 0.776); /* Azul Ocean Boat Blue con transparencia */
+    color: white; /* Color del texto */
+    
+    /* Asegurar centrado del texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 7px; /* Bordes redondeados */
+    font-size: 0.8rem; /* Tamaño de fuente más grande */
+    text-align: center; /* Asegura que el texto no se desborde */
+    font-family: Arial, sans-serif;
+    cursor: pointer; /* Indica que se puede hacer clic */
+}
+
+/* Estilos para el enlace */
+.contenedor-inferior a {
+    color: white;
+    text-decoration: none
+}
+
+/* Efecto al pasar el mouse por encima */
+.contenedor-inferior:hover {
+    background-color: rgba(255, 221, 51, 0.8); /* Cambia color al pasar el cursor */
+}
+
+/* Estilo para el contenedor que contiene el enlace invisible  SIGUE SIN FUNCIONAR */
+.contenedor-enlace {
+    position: absolute;
+    top: 10px; /* Distancia desde la parte superior */
+    left: 10px; /* Distancia desde la parte izquierda */
+    width: 0;
+    height: 0;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+}
+
+/* Estilo para el enlace invisible dentro del contenedor */
+.enlace-invisible {
+    display: block;
+    width: 0;
+    height: 0;
+    text-decoration: none; /* Elimina el subrayado */
+}
+
+@media (max-width: 768px) {
+    /* Ajustar la posición de los cuadros en móviles */
+    .contenedores-inferiores {
+        bottom: 20px;
+        right: 20px;
+        gap: 8px;
+    }
+
+    .contenedor-inferior {
+        width: 90%;      /* Que ocupe casi todo el ancho de la pantalla */
+        max-width: 300px;
+        height: 45px;     /* Un poco más alto si es necesario */
+        font-size: 1rem;  /* Texto más legible en móviles */
+    }
+    
+}
+.content {
+ position: absolute;
+  bottom: 676px;           /* distancia desde abajo */
+  left: 50%;
+  transform: translateX(-50%); /* para centrar horizontalmente */
+  display: grid;
+  gap: 90px;
+  grid-auto-flow: column; /*  Esto los pone en fila horizontal */
+  
+} 
+
+/*---------------------------------------------------------------------------------------------*/
+.contenedorbotones{
+    display: flex;
+    height: 100vh;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+
+    position: absolute;
+  bottom: 324px;           /* distancia desde abajo */
+  left: 55%;
+  transform: translateX(-50%); /* para centrar horizontalmente */
+  display: grid;
+  gap: 110px;
+  grid-auto-flow: column; /*  Esto los pone en fila horizontal */
+    
+}
+
+.btn{
+    position: relative;
+    padding: 20px 10px;
+    text-decoration: none;
+    color: rgba(255, 221, 51, 0.8);
+    background-color: #001a2b;
+    letter-spacing: 10px;
+    text-indent: 10px;
+    z-index: 2;
+}
+
+/*-----------boton 2----------*/
+
+.btn-2{
+    border: 3px solid;
+}
+
+.btn-2:hover{
+    background-color: #001a2bc9;
+    box-shadow: 0 0 20px var(--color);
+    border-color: var(--color);
+}
+
+.btn-2 span:nth-child(n){
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 3px solid;
+    transition: all 0.6s ease;
+}
+
+.btn-2 span:nth-child(1){
+    right: 10%;
+    top: -10px;
+    background-color: rgba(255, 221, 51, 0.8);
+}
+
+.btn-2 span:nth-child(2){
+    left: 10%;
+    bottom: -10px;
+}
+
+.btn-2:hover span:nth-child(1){
+    right: 80%;
+    transform: rotate(90deg);
+    color: var(--color);
+    background-color: var(--color);
+    
+}
+
+.btn-2:hover span:nth-child(2){
+    left: 80%;
+    transform: rotate(90deg);
+    color: var(--color);
+}
+/*---------------------------------------------------------------------------------------------*/
+
+button {
+ padding: 0.6em 1em;
+ border: 4px solid rgba(255, 221, 51, 0.8);
+ transition: ease-in-out 0.3s;
+ background-color: rgba(255, 221, 51, 0.8);
+ color: white;
+ font-weight: bolder;
+ font-size: 16px;
+ cursor: pointer; /* Indica que se puede hacer clic */
+ border-radius: 15px; /* Bordes redondeados */
+}
+
+button:nth-child(1):hover {
+ transform: scale(1.2) rotate(0deg);
+ background-color: #152e56;
+ color: rgb(255, 255, 255);
+}
+button:nth-child(2):hover {
+ transform: scale(1.2) rotate(0deg);
+ background-color: #152e56;
+ color: rgb(255, 255, 255);
+}
+button:nth-child(3):hover {
+ transform: scale(1.2) rotate(0deg);
+ background-color: #152e56;
+ color: rgb(255, 255, 255);
+}
+
+/*---------------------------------------------------------------------------------------------------*/
+/* Texto del tooltip */
+    .texto-animado .tooltiptext {
+      visibility: hidden; /* Oculto por defecto */
+      width: 150px;
+      background-color: rgba(16, 66, 100, 0.8);
+      color: #fff;
+      text-align: center;
+      border-radius: 5px;
+      padding: 8px;
+      position: absolute;
+      bottom: 120%; /* Ubica el tooltip arriba */
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+      z-index: 1;
+    }
+
+    /* Flecha abajo del tooltip */
+    .texto-animado .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%; /* Parte inferior del tooltip */
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 5px;
+      border-style: solid;
+      border-color: rgba(16, 66, 100, 0.8) transparent transparent transparent;
+    }
+
+    /* Mostrar el tooltip al pasar el mouse */
+    .texto-animado:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
+    }
+    /*---------------------------------------------------------------------------------------------------*/

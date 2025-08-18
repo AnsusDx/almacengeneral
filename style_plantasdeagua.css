@@ -1,0 +1,162 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Contenedor del catálogo */
+/* Contenedor del catálogo */
+.contenedor-catalogo2 {
+    width: 100%;
+    height: 100%; /* Usa la altura completa de la ventana */
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center; /* Asegura que las columnas estén centradas y balanceadas */
+    align-items: flex-start; /* Alinea las columnas en la parte superior */
+    flex-wrap: wrap; /* Permite que las columnas se envuelvan si es necesario */
+    gap: 20px; /* Espacio entre columnas */
+    padding: 50px; /* Agrega un margen interno alrededor del contenedor */
+}
+
+/* Estilo para las columnas */
+.columna {
+    width: 30%; /* Ajusta el ancho para que cada columna ocupe 30% */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch; /* Hace que todas las etiquetas dentro de la columna tengan el mismo ancho */
+}
+
+/* Estilo para las etiquetas */
+.etiqueta {
+    width: 85%; /* Asegura que las etiquetas ocupen todo el ancho de la columna */
+    background-color: rgb(255, 255, 255, 0.776); /* Azul Ocean Boat Blue con transparencia */
+    padding: 25px;
+    margin: 20px 0; /* Espaciado entre las etiquetas */
+    border-radius: 10px; /* Bordes redondeados para las etiquetas */
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9); /* Sombra suave */
+    z-index: 2; /* Coloca las etiquetas en una capa encima de la imagen */
+    position: relative; /* Posicionamiento relativo */
+    text-align: center; /* Centra el texto */
+}
+.numero {
+    font-weight: bold;
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.descripcion {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.ubicacion {
+    font-size: 13px;
+    color: rgb(52, 51, 51);
+}
+.transmision {
+    font-size: 12px; /* Tamaño más pequeño */
+    color: gray; /* Color más tenue */
+    margin-top: 8px; /* Espaciado debajo de la ubicación */
+}
+
+/* Estilo para la imagen */
+.imagen-catalogo2 {
+    width: 100%;
+    height: 100%; /* Mantiene la proporción de la imagen */
+    max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    position: fixed; /* Fija la imagen en su posición */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Coloca la imagen en una capa debajo de las etiquetas */
+    background-attachment: fixed; /* Fija la imagen de fondo */
+}
+
+/* Estilos para el enlace de regreso a página inicial */
+.back-link {
+    position: absolute;
+    top: 10px; /* Distancia desde la parte superior */
+    left: 10px; /* Distancia desde la parte izquierda */
+    font-size: 30px; /* Tamaño de los puntos */
+    color: #ffffff; /* Color del enlace */
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Establece el texto en negritas */
+    z-index: 3; /* Asegura que el enlace esté encima de la imagen */
+}
+
+/* Efecto al pasar el mouse por encima del enlace */
+.back-link:hover {
+    color: #ede902; /* Cambia el color cuando pasa el mouse por encima */
+}
+
+/* Estilo para la barra de búsqueda */
+.search-bar {
+    position: absolute;
+    top: 10px; /* Distancia desde la parte superior */
+    right: 10px; /* Distancia desde la parte derecha */
+    font-size: 9px; /* Tamaño de la fuente */
+    padding: 10px; /* Espaciado interno */
+    z-index: 3; /* Asegura que la barra esté encima de la imagen */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 1px solid #074165; /* Borde de la barra */
+}
+/* Tooltip personalizado */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: rgba(16, 66, 100, 0.7);
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px;
+    position: absolute;
+    z-index: 3;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 9px; /* Tamaño de la fuente */
+    font-family: Arial, sans-serif; /* Tipo de letra */
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+.link-etiqueta {
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: inherit; /* Mantiene el color original del texto */
+}
+.recuadro.en-revision {
+    margin: 10px; /* Amplios márgenes para "En revisión" */
+}
+
+.recuadro.seleccionado {
+    margin: 5px; /* Márgenes más pequeños para estados seleccionados */
+}
+
+.titulo {
+   position: relative;
+  z-index: 3;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;  /* Cambia aquí tu fuente favorita */
+  font-size: 5rem;                        /* Más grande para destacar */
+  margin: 20px 0;
+  color: #ffffff;                            /* Color del texto */
+  
+  /* Borde fino negro */
+  -webkit-text-stroke: 1px #050402;
+
+  /* Sombra suave para resaltar */
+  text-shadow:
+    2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+

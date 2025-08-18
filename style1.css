@@ -1,0 +1,43 @@
+/* Reset de márgenes y configuración general */
+body, html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+/* Contenedor de la imagen de políticas */
+.contenedor-politicas {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+/* Estilo para la imagen */
+.imagen-politicas {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;    
+    object-fit: cover;
+    z-index: 1; /* Asegura que el video esté detrás de otros elementos */
+}
+
+/* Estilos para el enlace de regreso a página inicial */
+.back-link {
+    position: absolute;
+    top: 10px; /* Distancia desde la parte superior */
+    left: 10px; /* Distancia desde la parte izquierda */
+    font-size: 30px; /* Tamaño de los puntos */
+    color: #ffffff; /* Color del enlace */
+    text-decoration: none; /* Elimina el subrayado */
+    font-weight: bold; /* Establece el texto en negritas */
+    z-index: 10; /* Asegura que el enlace esté encima de la imagen */
+}
+
+/* Efecto al pasar el mouse por encima del enlace */
+.back-link:hover {
+    color: #f5ff3a; /* Cambia el color cuando pasa el mouse por encima */
+}

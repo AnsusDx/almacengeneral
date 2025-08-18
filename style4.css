@@ -1,0 +1,145 @@
+/* Reset de márgenes y configuración general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Hace que el cuerpo ocupe toda la pantalla */
+body, html {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+/* Bloque invisible centrado */
+.invisible-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 810px;  /* Ajusta tamaño */
+  height: 150px; /* Ajusta tamaño */
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  /* Opcional: pon un borde para verlo mientras pruebas */
+  /* border: 2px dashed red; */
+  background: transparent;
+}
+
+/* Tooltip dentro del bloque */
+.invisible-button .tooltiptext {
+  visibility: hidden;
+  width: 180px;
+  background-color: rgba(16, 66, 100, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  bottom: 120%; /* Aparece arriba */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+}
+
+.invisible-button .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Flecha abajo */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(16, 66, 100, 0.8) transparent transparent transparent;
+}
+
+/* Mostrar tooltip al hacer hover */
+.invisible-button:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Fondo de video */
+/* Contenedor principal con video de fondo */
+.contenedor {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;    
+    object-fit: cover;
+}
+
+/* Contenedor de texto centrado */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Centra verticalmente */
+  gap: 40px; /* Espacio entre textos */
+  color: white;
+  font-family: Arial, sans-serif;
+  padding-top: 400px; /* Baja todo 200px */
+}
+
+/* Cada ítem de texto */
+.item {
+  position: relative; /* Necesario para el tooltip */
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.item:hover {
+  transform: scale(1.1);
+}
+
+/* Tooltip */
+.tooltiptext {
+  visibility: hidden;
+  width: 150px;
+  background-color: rgba(16, 66, 100, 0.8);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 8px;
+  position: absolute;
+  bottom: 120%; /* Arriba del texto */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 12px;
+}
+
+.tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Parte inferior del tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(16, 66, 100, 0.8) transparent transparent transparent;
+}
+
+.item:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Back link */
+.back-link {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 1;
+}
