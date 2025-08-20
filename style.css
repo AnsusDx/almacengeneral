@@ -122,24 +122,21 @@ body, html {
 
 /*---------------------------------------------------------------------------------------------*/
 .contenedorbotones{
-    display: flex;
+     display: flex;
     height: 100vh;
     gap: 25px;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    flex-direction:column;
 
-    position: static;
+    position: absolute;
   bottom: 324px;           /* distancia desde abajo */
   left: 55%;
   transform: translateX(-50%); /* para centrar horizontalmente */
   display: grid;
-  gap: 15px;
-    margin-top: 40px;
+  gap: 110px;
   grid-auto-flow: column; /*  Esto los pone en fila horizontal */
-    position: relative;
-    z-index: 10;
+    
 }
 
 .btn{
@@ -271,5 +268,6 @@ button:nth-child(3):hover {
     }
 
     /*---------------------------------------------------------------------------------------------------*/
+
 
 
