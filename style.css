@@ -128,13 +128,15 @@ body, html {
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    flex-direction:column;
 
-    position: absolute;
+    position: static;
   bottom: 324px;           /* distancia desde abajo */
   left: 55%;
   transform: translateX(-50%); /* para centrar horizontalmente */
   display: grid;
-  gap: 110px;
+  gap: 15px;
+    margin-top: 40px;
   grid-auto-flow: column; /*  Esto los pone en fila horizontal */
     position: relative;
     z-index: 10;
@@ -269,4 +271,5 @@ button:nth-child(3):hover {
     }
 
     /*---------------------------------------------------------------------------------------------------*/
+
 
