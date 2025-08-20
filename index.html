@@ -91,6 +91,67 @@
       color: #ffd21f;
     }
 
+        /* --- Estilos para pantallas pequeñas (celulares y tablets) --- */
+@media screen and (max-width: 768px) {
+    body {
+        height: auto; /* Permite que crezca según el contenido */
+        background-size: cover;
+        background-position: center;
+    }
+
+    .logo-esquina {
+        width: 150px; /* más chico en móvil */
+    }
+
+    .texto-animado {
+        font-size: 20px;
+        bottom: 20px; /* más cerca del borde inferior */
+    }
+
+    .almacen {
+        font-size: 80px; /* más chico en móvil */
+        line-height: 1.2;
+    }
+
+    .general {
+        font-size: 30px;
+    }
+
+    .lower-third {
+        bottom: 20px; /* más pegado al borde inferior */
+    }
+
+    .lower-third img {
+        height: 30px;
+    }
+
+    .puntos {
+        font-size: 40px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .contenedorbotones {
+        display: flex;
+        flex-direction: column; /* botones uno debajo del otro */
+        gap: 10px;
+        align-items: center;
+    }
+
+    .contenedorbotones a {
+        font-size: 14px;
+        padding: 8px 12px;
+        width: 80%; /* ocupa gran parte de la pantalla */
+        text-align: center;
+    }
+
+    video.contenedor {
+        width: 100%;
+        height: auto;
+    }
+}
+
+        
     </style>
     <!--<img src="constellationbrandss.png" alt="Logo" class="logo-esquina">-->
     <!--<img src="almacen.png" alt="Logo" class="logo-centro" class="logo-centro:hover">-->
@@ -141,5 +202,6 @@
         <a href="PRUEBALATA.html" class="puntos">...</a></div>
 </body>
 </html>
+
 
 
