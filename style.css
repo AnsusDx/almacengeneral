@@ -26,6 +26,8 @@ body, html {
     top: 0;
     left: 0;    
     object-fit: cover;
+    z-index: -1;   /* 🔥 IMPORTANTE: lo manda al fondo */
+
 }
 
 /* Contenedor de los cuadros inferiores */
@@ -36,6 +38,8 @@ body, html {
     display: flex;
     flex-direction: column; /* Organiza los cuadros verticalmente */
     gap: 10px; /* Espaciado entre los cuadros */
+    position: relative;
+    z-index: 10;
 }
 
 /* Estilos de los cuadros inferiores */
@@ -55,12 +59,15 @@ body, html {
     text-align: center; /* Asegura que el texto no se desborde */
     font-family: Arial, sans-serif;
     cursor: pointer; /* Indica que se puede hacer clic */
+    position: relative;
+    z-index: 10;
 }
 
 /* Estilos para el enlace */
 .contenedor-inferior a {
     color: white;
     text-decoration: none
+    
 }
 
 /* Efecto al pasar el mouse por encima */
@@ -129,7 +136,8 @@ body, html {
   display: grid;
   gap: 110px;
   grid-auto-flow: column; /*  Esto los pone en fila horizontal */
-    
+    position: relative;
+    z-index: 10;
 }
 
 .btn{
@@ -248,12 +256,17 @@ button:nth-child(3):hover {
       border-width: 5px;
       border-style: solid;
       border-color: rgba(16, 66, 100, 0.8) transparent transparent transparent;
+    position: relative;
+    z-index: 10;
     }
 
     /* Mostrar el tooltip al pasar el mouse */
     .texto-animado:hover .tooltiptext {
       visibility: visible;
       opacity: 1;
+    position: relative;
+    z-index: 10;
     }
 
     /*---------------------------------------------------------------------------------------------------*/
+
