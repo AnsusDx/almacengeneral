@@ -5,27 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const id = etiqueta.id;
     const recuadro = etiqueta.querySelector('.recuadro');
 
-    // Cargar estado desde Firestore
-    db.collection("refacciones").doc(id).get()
-      .then(docSnap => {
-        if (docSnap.exists) {
-          const data = docSnap.data();
-          recuadro.textContent = `☑ ${data.estado}`;
-          recuadro.style.fontSize = "11px";
-          recuadro.style.margin = "9.5px";
-          recuadro.classList.add('checked');
-        } else {
-          recuadro.textContent = '☐';
-          recuadro.style.fontSize = "11px";
-          recuadro.style.margin = "1px";
-          recuadro.classList.remove('checked');
-        }
-      })
-      .catch(err => console.error("Error leyendo Firestore:", err));
-
-    // Asignar click
+    // Listener del click (prompt)
     etiqueta.addEventListener('click', () => {
-      const recuadro = etiqueta.querySelector('.recuadro');
       let nuevoTexto = '';
       while (!["estratégico","estrategico","no estratégico","no estrategico","obsoleto"].includes(nuevoTexto.toLowerCase())) {
         nuevoTexto = prompt("Seleccione el estado (Estratégico, No estratégico, Obsoleto):");
@@ -45,9 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
       recuadro.classList.add('checked');
 
       // Guardar en Firestore
-      db.collection("refacciones").doc(id).set({ estado: nuevoTexto })
+      setDoc(doc(db, "refacciones", id), { estado: nuevoTexto })
         .then(() => console.log(`Guardado: ${id} → ${nuevoTexto}`))
         .catch(err => console.error("Error guardando:", err));
     });
+
+    // Cargar estado desde Firestore
+    getDoc(doc(db, "refacciones", id))
+      .then(docSnap => {
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          recuadro.textContent = `☑ ${data.estado}`;
+          recuadro.style.fontSize = "11px";
+          recuadro.style.margin = "9.5px";
+          recuadro.classList.add('checked');
+        } else {
+          recuadro.textContent = '☐';
+          recuadro.style.fontSize = "11px";
+          recuadro.style.margin = "1px";
+          recuadro.classList.remove('checked');
+        }
+      })
+      .catch(err => console.error("Error leyendo Firestore:", err));
   });
 });
