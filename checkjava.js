@@ -1,12 +1,12 @@
 // 🔹 Configuración Firebase (poner la tuya)
 const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_PROJECT_ID.firebaseapp.com",
-    databaseURL: "https://TU_PROJECT_ID-default-rtdb.firebaseio.com",
-    projectId: "TU_PROJECT_ID",
-    storageBucket: "TU_PROJECT_ID.appspot.com",
-    messagingSenderId: "TU_SENDER_ID",
-    appId: "TU_APP_ID"
+  apiKey: "AIzaSyAeUkFBkdN4-DGFuCMvYY-B6c_Qy_1n84w",
+  authDomain: "refacciones-67f92.firebaseapp.com",
+  databaseURL: "https://refacciones-67f92-default-rtdb.firebaseio.com",
+  projectId: "refacciones-67f92",
+  storageBucket: "refacciones-67f92.firebasestorage.app",
+  messagingSenderId: "577035417351",
+  appId: "1:577035417351:web:d6d4be5125fb3616cf37a2"
 };
 
 // Inicializar Firebase
@@ -89,3 +89,4 @@ function cargarEstadoEtiquetasYTexto() {
 
 // Inicializar al cargar la página
 window.onload = cargarEstadoEtiquetasYTexto;
+
