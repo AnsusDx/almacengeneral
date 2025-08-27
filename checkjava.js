@@ -1,7 +1,4 @@
 // ------------------- FIREBASE -------------------
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyAWpSmJZgCkcHqhLIiX_GqYIZka8tf8mfI",
   authDomain: "catalogorefacciones.firebaseapp.com",
@@ -12,11 +9,11 @@ const firebaseConfig = {
   measurementId: "G-WEBZHRJ8K1"
 };
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
 
 // ------------------- FUNCIONES -------------------
-export async function marcarCheckYActualizarTexto(etiqueta) {
+function marcarCheckYActualizarTexto(etiqueta) {
   const recuadro = etiqueta.querySelector('.recuadro');
   const id = etiqueta.id;
 
@@ -38,35 +35,33 @@ export async function marcarCheckYActualizarTexto(etiqueta) {
   recuadro.style.margin = "9.5px";
 
   // Guardar en Firestore
-  try {
-    await setDoc(doc(db, "refacciones", id), { estado: nuevoTexto });
-    console.log(`Guardado en Firestore: ${id} → ${nuevoTexto}`);
-  } catch (err) {
-    console.error("Error guardando en Firestore:", err);
-  }
+  db.collection("refacciones").doc(id).set({ estado: nuevoTexto })
+    .then(() => console.log(`Guardado en Firestore: ${id} → ${nuevoTexto}`))
+    .catch(err => console.error("Error guardando en Firestore:", err));
 }
 
 // Cargar estados desde Firestore y asignar eventos
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   const etiquetas = document.querySelectorAll('.etiqueta');
-  for (const etiqueta of etiquetas) {
+  etiquetas.forEach(etiqueta => {
     const id = etiqueta.id;
     const recuadro = etiqueta.querySelector('.recuadro');
 
-    try {
-      const docSnap = await getDoc(doc(db, "refacciones", id));
-      if (docSnap.exists()) {
-        const data = docSnap.data();
-        recuadro.textContent = `☑ ${data.estado}`;
-        recuadro.style.fontSize = "11px";
-        recuadro.style.margin = "9.5px";
-      }
-    } catch (err) {
-      console.error("Error leyendo Firestore:", err);
-    }
+    // Leer Firestore
+    db.collection("refacciones").doc(id).get()
+      .then(docSnap => {
+        if (docSnap.exists) {
+          const data = docSnap.data();
+          recuadro.textContent = `☑ ${data.estado}`;
+          recuadro.style.fontSize = "11px";
+          recuadro.style.margin = "9.5px";
+        }
+      })
+      .catch(err => console.error("Error leyendo Firestore:", err));
 
+    // Click para actualizar
     etiqueta.addEventListener('click', () => {
       marcarCheckYActualizarTexto(etiqueta);
     });
-  }
+  });
 });
