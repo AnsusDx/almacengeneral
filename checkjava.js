@@ -1,4 +1,8 @@
-// 🔹 Configuración Firebase (poner la tuya)
+// 🔹 Importar solo lo que necesitamos
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+
+// 🔹 Configuración Firebase (tu proyecto)
 const firebaseConfig = {
   apiKey: "AIzaSyAeUkFBkdN4-DGFuCMvYY-B6c_Qy_1n84w",
   authDomain: "refacciones-67f92.firebaseapp.com",
@@ -9,23 +13,21 @@ const firebaseConfig = {
   appId: "1:577035417351:web:d6d4be5125fb3616cf37a2"
 };
 
-// Inicializar Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+// 🔹 Inicializar Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
-// Opciones válidas
+// Opciones válidas para selección
 const opcionesValidas = ["estratégico", "estrategico",
                          "no estratégico", "no estrategico",
                          "obsoleto"];
 
-// Función para guardar en Firebase
+// 🔹 Guardar estado en Firebase
 function guardarEnFirebase(idEtiqueta, texto) {
-    firebase.database().ref('etiquetas/' + idEtiqueta).set({
-        estado: texto
-    });
+    set(ref(database, 'etiquetas/' + idEtiqueta), { estado: texto });
 }
 
-// Función para alternar estado y actualizar texto
+// 🔹 Función para alternar estado y actualizar UI
 function marcarCheckYActualizarTexto(idEtiqueta) {
     const etiqueta = document.getElementById(idEtiqueta);
     const recuadro = etiqueta.querySelector('.recuadro');
@@ -58,7 +60,7 @@ function marcarCheckYActualizarTexto(idEtiqueta) {
     }
 }
 
-// Función para cargar estados desde Firebase
+// 🔹 Función para cargar estados desde Firebase
 function cargarEstadoEtiquetasYTexto() {
     const etiquetas = document.querySelectorAll('.etiqueta');
 
@@ -67,7 +69,7 @@ function cargarEstadoEtiquetasYTexto() {
         const idEtiqueta = etiqueta.id;
 
         // Escucha en tiempo real
-        firebase.database().ref('etiquetas/' + idEtiqueta).on('value', snapshot => {
+        onValue(ref(database, 'etiquetas/' + idEtiqueta), (snapshot) => {
             const textoGuardado = snapshot.val() ? snapshot.val().estado : null;
 
             if (!textoGuardado) {
@@ -87,6 +89,5 @@ function cargarEstadoEtiquetasYTexto() {
     });
 }
 
-// Inicializar al cargar la página
+// 🔹 Inicializar al cargar la página
 window.onload = cargarEstadoEtiquetasYTexto;
-
