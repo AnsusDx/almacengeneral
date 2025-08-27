@@ -1,59 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Refacciones</title>
-  <style>
-    .etiqueta {
-      margin: 10px;
-      display: inline-block;
-      cursor: pointer;
-    }
-    .recuadro {
-      border: 1px solid #000;
-      padding: 5px 10px;
-      display: inline-block;
-      min-width: 150px;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Refacciones</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .recuadro {
+            display: inline-block;
+            padding: 5px;
+            border: 1px solid #333;
+            cursor: pointer;
+            font-size: 11px;
+            margin: 1px;
+        }
+        .checked {
+            font-weight: bold;
+            margin: 9.5px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Catálogo de Refacciones</h1>
 
-  <div class="etiqueta" id="ref1">
-    <div class="recuadro">☐</div>
-    <span>BALERO 22310 CCK C3</span>
-  </div>
+<div id="etiqueta1" class="etiqueta">
+    <div class="recuadro">☐</div> Refacción 1
+</div>
+<div id="etiqueta2" class="etiqueta">
+    <div class="recuadro">☐</div> Refacción 2
+</div>
 
-  <div class="etiqueta" id="ref2">
-    <div class="recuadro">☐</div>
-    <span>BANDA 8MGT-2000-12</span>
-  </div>
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
 
-  <!-- Firebase SDK -->
-  <script type="module">
-    // Import Firebase
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js";
+<!-- Tu archivo JS -->
+<script src="checkjava.js"></script>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAWpSmJZgCkcHqhLIiX_GqYIZka8tf8mfI",
-      authDomain: "catalogorefacciones.firebaseapp.com",
-      projectId: "catalogorefacciones",
-      storageBucket: "catalogorefacciones.appspot.com",
-      messagingSenderId: "686630156000",
-      appId: "1:686630156000:web:f868aac53b45befacac285"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    window.db = db; // Hacemos db global para usarlo en checkjava.js
-  </script>
-
-  <!-- Tu código JS -->
-  <script type="module" src="checkjava.js"></script>
 </body>
 </html>
