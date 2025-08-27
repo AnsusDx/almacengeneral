@@ -37,12 +37,38 @@
       border-color: #28a745;
     }
 
-    .acciones button {
-      display: block;
-      margin: 3px auto;
-      width: 80%;
+    .menu {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
+
+    .menu-opciones {
+      display: none;
+      position: absolute;
+      top: 25px;
+      right: 0;
+      background: white;
+      border: 1px solid #ccc;
       padding: 5px;
+      z-index: 10;
+    }
+
+    .menu-opciones button {
+      display: block;
+      margin: 2px 0;
+      width: 100%;
       cursor: pointer;
+    }
+
+    .check-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-container input {
+      margin-right: 5px;
     }
   </style>
 </head>
@@ -51,23 +77,53 @@
 
   <!-- Recuadro de ejemplo -->
   <div class="etiqueta" id="etiqueta1">
-    <div class="recuadro">☐</div>
-    <div class="acciones">
-      <button class="boton-opcion" data-valor="En revisión">En revisión</button>
-      <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
-      <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
+    <div class="recuadro">
+      <label class="check-container">
+        <input type="checkbox" class="check">
+        Seleccionado
+      </label>
+    </div>
+    <div class="menu">
+      <button class="menu-btn">⚙️</button>
+      <div class="menu-opciones">
+        <button class="boton-opcion" data-valor="En revisión">En revisión</button>
+        <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
+        <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
+      </div>
     </div>
   </div>
 
   <div class="etiqueta" id="etiqueta2">
-    <div class="recuadro">☐</div>
-    <div class="acciones">
-      <button class="boton-opcion" data-valor="En revisión">En revisión</button>
-      <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
-      <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
+    <div class="recuadro">
+      <label class="check-container">
+        <input type="checkbox" class="check">
+        Seleccionado
+      </label>
+    </div>
+    <div class="menu">
+      <button class="menu-btn">⚙️</button>
+      <div class="menu-opciones">
+        <button class="boton-opcion" data-valor="En revisión">En revisión</button>
+        <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
+        <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
+      </div>
     </div>
   </div>
 
-  <script type="module" src="app.js"></script>
+  <script type="module" src="checkjava.js"></script>
+  <script>
+    // Menú desplegable
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const opciones = btn.nextElementSibling;
+        opciones.style.display = opciones.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.menu-opciones').forEach(menu => menu.style.display = 'none');
+    });
+  </script>
 </body>
 </html>
