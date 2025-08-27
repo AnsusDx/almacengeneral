@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Refacciones</title>
-    <link rel="stylesheet" href="style.css">
     <style>
+        /* Estilos de los recuadros */
         .recuadro {
             display: inline-block;
             padding: 5px;
@@ -22,19 +22,21 @@
 </head>
 <body>
 
+<h1>Catálogo de Refacciones</h1>
+
+<!-- Ejemplos de etiquetas -->
 <div id="etiqueta1" class="etiqueta">
     <div class="recuadro">☐</div> Refacción 1
 </div>
 <div id="etiqueta2" class="etiqueta">
     <div class="recuadro">☐</div> Refacción 2
 </div>
+<div id="etiqueta3" class="etiqueta">
+    <div class="recuadro">☐</div> Refacción 3
+</div>
 
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js"></script>
-
-<!-- Tu archivo JS -->
-<script src="checkjava.js"></script>
+<!-- Tu archivo JS usando módulo -->
+<script type="module" src="checkjava.js"></script>
 
 </body>
 </html>
