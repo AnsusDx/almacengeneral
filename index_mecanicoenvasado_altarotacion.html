@@ -10,26 +10,32 @@
       padding: 20px;
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
     .etiqueta {
       display: inline-block;
       border: 1px solid #ccc;
       padding: 10px;
       margin: 10px;
-      width: 150px;
-      text-align: center;
+      width: 220px;
+      text-align: left;
       position: relative;
+      vertical-align: top;
+    }
+
+    .link-etiqueta {
+      text-decoration: none;
+      color: black;
+    }
+
+    .numero {
+      font-weight: bold;
     }
 
     .recuadro {
       border: 1px solid #999;
-      padding: 10px;
-      margin-bottom: 5px;
+      padding: 5px;
+      margin-top: 5px;
       cursor: pointer;
+      text-align: center;
     }
 
     .recuadro.checked {
@@ -37,6 +43,7 @@
       border-color: #28a745;
     }
 
+    /* Botón menú */
     .menu {
       position: absolute;
       top: 5px;
@@ -61,45 +68,46 @@
       cursor: pointer;
     }
 
-    .check-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Tooltip de tu código original */
+    .tooltiptext {
+      visibility: hidden;
+      width: 200px;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 125%;
+      left: 50%;
+      margin-left: -100px;
+      opacity: 0;
+      transition: opacity 0.3s;
     }
 
-    .check-container input {
-      margin-right: 5px;
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+      opacity: 1;
     }
   </style>
 </head>
 <body>
-  <h1>Catálogo de Refacciones</h1>
 
-  <!-- Recuadro de ejemplo -->
-  <div class="etiqueta" id="etiqueta1">
-    <div class="recuadro">
-      <label class="check-container">
-        <input type="checkbox" class="check">
-        Seleccionado
-      </label>
-    </div>
-    <div class="menu">
-      <button class="menu-btn">⚙️</button>
-      <div class="menu-opciones">
-        <button class="boton-opcion" data-valor="En revisión">En revisión</button>
-        <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
-        <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
-      </div>
-    </div>
-  </div>
+  <!-- Recuadro con enlace, recuadro de estado y menú desplegable -->
+  <div class="etiqueta tooltip" id="etiqueta4361302">
+    <a href="https://constel1-my.sharepoint.com/:i:/g/personal/diana_quijada_cbrands_com/Ec91SOQAR-RIpaOuenOCOFMBbCOx8I0QJVfkbu5RGXYkww?e=s3V0zj" target="_blank" class="link-etiqueta"> 
+      <div class="numero">4361302</div>
+      <div class="descripcion">CASQUILLO XSM-1214-08</div>
+      <div class="ubicacion">PYR1 A11-D05-A</div>
+      <div class="transmision">refacciones generales</div>
+      <span class="tooltiptext">MARCA: KRONES USADO EN: K226185 NUMERO DE PARTE: 0129900062</span>
+    </a>
 
-  <div class="etiqueta" id="etiqueta2">
-    <div class="recuadro">
-      <label class="check-container">
-        <input type="checkbox" class="check">
-        Seleccionado
-      </label>
-    </div>
+    <!-- El recuadro que se guarda en Firebase -->
+    <div class="recuadro">☐</div>
+
+    <!-- Menú desplegable -->
     <div class="menu">
       <button class="menu-btn">⚙️</button>
       <div class="menu-opciones">
@@ -112,7 +120,7 @@
 
   <script type="module" src="checkjava.js"></script>
   <script>
-    // Menú desplegable
+    // Controla el menú desplegable
     document.querySelectorAll('.menu-btn').forEach(btn => {
       btn.addEventListener('click', e => {
         e.stopPropagation();
