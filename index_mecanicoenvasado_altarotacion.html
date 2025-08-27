@@ -5,18 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Refacciones</title>
     <style>
-        /* Estilos de los recuadros */
         .recuadro {
             display: inline-block;
             padding: 5px;
             border: 1px solid #333;
             cursor: pointer;
             font-size: 11px;
-            margin: 1px;
+            margin: 5px;
         }
         .checked {
             font-weight: bold;
             margin: 9.5px;
+        }
+        .boton-opcion {
+            margin-left: 5px;
+            padding: 2px 6px;
+            font-size: 11px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -24,18 +29,23 @@
 
 <h1>Catálogo de Refacciones</h1>
 
-<!-- Ejemplos de etiquetas -->
 <div id="etiqueta1" class="etiqueta">
     <div class="recuadro">☐</div> Refacción 1
-</div>
-<div id="etiqueta2" class="etiqueta">
-    <div class="recuadro">☐</div> Refacción 2
-</div>
-<div id="etiqueta3" class="etiqueta">
-    <div class="recuadro">☐</div> Refacción 3
+    <button class="boton-opcion" data-valor="Estratégico">Estratégico</button>
+    <button class="boton-opcion" data-valor="No estratégico">No estratégico</button>
+    <button class="boton-opcion" data-valor="Obsoleto">Obsoleto</button>
+    <button class="boton-opcion" data-valor="En revisión">En revisión</button>
 </div>
 
-<!-- Tu archivo JS usando módulo -->
+<div id="etiqueta2" class="etiqueta">
+    <div class="recuadro">☐</div> Refacción 2
+    <button class="boton-opcion" data-valor="Estratégico">Estratégico</button>
+    <button class="boton-opcion" data-valor="No estratégico">No estratégico</button>
+    <button class="boton-opcion" data-valor="Obsoleto">Obsoleto</button>
+    <button class="boton-opcion" data-valor="En revisión">En revisión</button>
+</div>
+
+<!-- SDK modular de Firebase -->
 <script type="module" src="checkjava.js"></script>
 
 </body>
