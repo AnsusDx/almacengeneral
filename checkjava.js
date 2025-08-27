@@ -1,68 +1,72 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
-import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+// ------------------- FIREBASE -------------------
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-firestore.js";
 
-// Configuración Firebase
 const firebaseConfig = {
-  apiKey: "AIzaSyAeUkFBkdN4-DGFuCMvYY-B6c_Qy_1n84w",
-  authDomain: "refacciones-67f92.firebaseapp.com",
-  databaseURL: "https://refacciones-67f92-default-rtdb.firebaseio.com",
-  projectId: "refacciones-67f92",
-  storageBucket: "refacciones-67f92.firebasestorage.app",
-  messagingSenderId: "577035417351",
-  appId: "1:577035417351:web:d6d4be5125fb3616cf37a2"
+  apiKey: "AIzaSyAWpSmJZgCkcHqhLIiX_GqYIZka8tf8mfI",
+  authDomain: "catalogorefacciones.firebaseapp.com",
+  projectId: "catalogorefacciones",
+  storageBucket: "catalogorefacciones.firebasestorage.app",
+  messagingSenderId: "686630156000",
+  appId: "1:686630156000:web:f868aac53b45befacac285",
+  measurementId: "G-WEBZHRJ8K1"
 };
 
-// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
+const db = getFirestore(app);
 
-// Función para actualizar el recuadro y guardar en Firebase
-function actualizarEstado(idEtiqueta, nuevoTexto) {
-    const etiqueta = document.getElementById(idEtiqueta);
+// ------------------- FUNCIONES -------------------
+export async function marcarCheckYActualizarTexto(etiqueta) {
+  const recuadro = etiqueta.querySelector('.recuadro');
+  const id = etiqueta.id;
+
+  let nuevoTexto = '';
+  while (!["estratégico","estrategico","no estratégico","no estrategico","obsoleto"].includes(nuevoTexto.toLowerCase())) {
+    nuevoTexto = prompt("Seleccione el estado (Estratégico, No estratégico, Obsoleto):");
+    if (!nuevoTexto) return;
+    if (!["estratégico","estrategico","no estratégico","no estrategico","obsoleto"].includes(nuevoTexto.toLowerCase())) {
+      alert("La palabra ingresada no es correcta. Intente nuevamente.");
+    }
+  }
+
+  if (["estratégico","estrategico"].includes(nuevoTexto.toLowerCase())) nuevoTexto = "Estratégico";
+  else if (["no estratégico","no estrategico"].includes(nuevoTexto.toLowerCase())) nuevoTexto = "No estratégico";
+  else nuevoTexto = "Obsoleto";
+
+  recuadro.textContent = `☑ ${nuevoTexto}`;
+  recuadro.style.fontSize = "11px";
+  recuadro.style.margin = "9.5px";
+
+  // Guardar en Firestore
+  try {
+    await setDoc(doc(db, "refacciones", id), { estado: nuevoTexto });
+    console.log(`Guardado en Firestore: ${id} → ${nuevoTexto}`);
+  } catch (err) {
+    console.error("Error guardando en Firestore:", err);
+  }
+}
+
+// Cargar estados desde Firestore y asignar eventos
+document.addEventListener('DOMContentLoaded', async () => {
+  const etiquetas = document.querySelectorAll('.etiqueta');
+  for (const etiqueta of etiquetas) {
+    const id = etiqueta.id;
     const recuadro = etiqueta.querySelector('.recuadro');
 
-    if (nuevoTexto === "En revisión") {
-        recuadro.textContent = '☐ En revisión';
-        recuadro.classList.remove('checked');
-    } else {
-        recuadro.textContent = `☑ ${nuevoTexto}`;
-        recuadro.classList.add('checked');
+    try {
+      const docSnap = await getDoc(doc(db, "refacciones", id));
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        recuadro.textContent = `☑ ${data.estado}`;
+        recuadro.style.fontSize = "11px";
+        recuadro.style.margin = "9.5px";
+      }
+    } catch (err) {
+      console.error("Error leyendo Firestore:", err);
     }
 
-    // Guardar en Firebase
-    set(ref(database, 'etiquetas/' + idEtiqueta), { estado: nuevoTexto });
-}
-
-// Función para cargar los estados desde Firebase en tiempo real
-function cargarEstados() {
-    const etiquetas = document.querySelectorAll('.etiqueta');
-
-    etiquetas.forEach(etiqueta => {
-        const idEtiqueta = etiqueta.id;
-        const recuadro = etiqueta.querySelector('.recuadro');
-
-        // Escucha cambios en tiempo real
-        onValue(ref(database, 'etiquetas/' + idEtiqueta), snapshot => {
-            const estado = snapshot.val() ? snapshot.val().estado : null;
-            if (!estado) {
-                recuadro.textContent = '☐';
-                recuadro.classList.remove('checked');
-            } else if (estado === "En revisión") {
-                recuadro.textContent = '☐ En revisión';
-                recuadro.classList.remove('checked');
-            } else {
-                recuadro.textContent = `☑ ${estado}`;
-                recuadro.classList.add('checked');
-            }
-        });
-
-        // Agregar evento a los botones
-        const botones = etiqueta.querySelectorAll('.boton-opcion');
-        botones.forEach(btn => {
-            btn.onclick = () => actualizarEstado(idEtiqueta, btn.dataset.valor);
-        });
+    etiqueta.addEventListener('click', () => {
+      marcarCheckYActualizarTexto(etiqueta);
     });
-}
-
-// Inicializar al cargar
-window.onload = cargarEstados;
+  }
+});

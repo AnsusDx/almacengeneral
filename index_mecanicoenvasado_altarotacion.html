@@ -3,135 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo de Refacciones</title>
+  <title>Catálogo Refacciones</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-
-    .etiqueta {
-      display: inline-block;
-      border: 1px solid #ccc;
-      padding: 10px;
-      margin: 10px;
-      width: 220px;
-      text-align: left;
-      position: relative;
-      vertical-align: top;
-    }
-
-    .link-etiqueta {
-      text-decoration: none;
-      color: black;
-    }
-
-    .numero {
-      font-weight: bold;
-    }
-
-    .recuadro {
-      border: 1px solid #999;
-      padding: 5px;
-      margin-top: 5px;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .recuadro.checked {
-      background-color: #d4edda;
-      border-color: #28a745;
-    }
-
-    /* Botón menú */
-    .menu {
-      position: absolute;
-      top: 5px;
-      right: 5px;
-    }
-
-    .menu-opciones {
-      display: none;
-      position: absolute;
-      top: 25px;
-      right: 0;
-      background: white;
-      border: 1px solid #ccc;
-      padding: 5px;
-      z-index: 10;
-    }
-
-    .menu-opciones button {
-      display: block;
-      margin: 2px 0;
-      width: 100%;
-      cursor: pointer;
-    }
-
-    /* Tooltip de tu código original */
-    .tooltiptext {
-      visibility: hidden;
-      width: 200px;
-      background-color: #555;
-      color: #fff;
-      text-align: center;
-      border-radius: 6px;
-      padding: 5px;
-      position: absolute;
-      z-index: 1;
-      bottom: 125%;
-      left: 50%;
-      margin-left: -100px;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .tooltip:hover .tooltiptext {
-      visibility: visible;
-      opacity: 1;
-    }
+    .etiqueta { margin: 10px 0; cursor: pointer; }
+    .recuadro { display: inline-block; padding: 5px 10px; border: 1px solid #333; }
+    .checked { background-color: #d0f0c0; }
   </style>
 </head>
 <body>
+  <h1>Catálogo Refacciones</h1>
 
-  <!-- Recuadro con enlace, recuadro de estado y menú desplegable -->
-  <div class="etiqueta tooltip" id="etiqueta4361302">
-    <a href="https://constel1-my.sharepoint.com/:i:/g/personal/diana_quijada_cbrands_com/Ec91SOQAR-RIpaOuenOCOFMBbCOx8I0QJVfkbu5RGXYkww?e=s3V0zj" target="_blank" class="link-etiqueta"> 
-      <div class="numero">4361302</div>
-      <div class="descripcion">CASQUILLO XSM-1214-08</div>
-      <div class="ubicacion">PYR1 A11-D05-A</div>
-      <div class="transmision">refacciones generales</div>
-      <span class="tooltiptext">MARCA: KRONES USADO EN: K226185 NUMERO DE PARTE: 0129900062</span>
-    </a>
-
-    <!-- El recuadro que se guarda en Firebase -->
-    <div class="recuadro">☐</div>
-
-    <!-- Menú desplegable -->
-    <div class="menu">
-      <button class="menu-btn">⚙️</button>
-      <div class="menu-opciones">
-        <button class="boton-opcion" data-valor="En revisión">En revisión</button>
-        <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
-        <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
-      </div>
-    </div>
+  <div class="etiqueta" id="ref1">
+    <div class="recuadro">☐</div> Balero 22310 CCK C3
   </div>
 
-  <script type="module" src="checkjava.js"></script>
-  <script>
-    // Controla el menú desplegable
-    document.querySelectorAll('.menu-btn').forEach(btn => {
-      btn.addEventListener('click', e => {
-        e.stopPropagation();
-        const opciones = btn.nextElementSibling;
-        opciones.style.display = opciones.style.display === 'block' ? 'none' : 'block';
-      });
-    });
+  <div class="etiqueta" id="ref2">
+    <div class="recuadro">☐</div> Banda 8MGT-2000-12
+  </div>
 
-    document.addEventListener('click', () => {
-      document.querySelectorAll('.menu-opciones').forEach(menu => menu.style.display = 'none');
-    });
-  </script>
+  <!-- Firebase SDK y tu JS -->
+  <script type="module" src="checkjava.js"></script>
 </body>
 </html>
