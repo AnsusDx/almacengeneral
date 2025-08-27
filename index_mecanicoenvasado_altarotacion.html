@@ -1,52 +1,73 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Refacciones</title>
-    <style>
-        .recuadro {
-            display: inline-block;
-            padding: 5px;
-            border: 1px solid #333;
-            cursor: pointer;
-            font-size: 11px;
-            margin: 5px;
-        }
-        .checked {
-            font-weight: bold;
-            margin: 9.5px;
-        }
-        .boton-opcion {
-            margin-left: 5px;
-            padding: 2px 6px;
-            font-size: 11px;
-            cursor: pointer;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Refacciones</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .etiqueta {
+      display: inline-block;
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px;
+      width: 150px;
+      text-align: center;
+      position: relative;
+    }
+
+    .recuadro {
+      border: 1px solid #999;
+      padding: 10px;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+
+    .recuadro.checked {
+      background-color: #d4edda;
+      border-color: #28a745;
+    }
+
+    .acciones button {
+      display: block;
+      margin: 3px auto;
+      width: 80%;
+      padding: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
+  <h1>Catálogo de Refacciones</h1>
 
-<h1>Catálogo de Refacciones</h1>
+  <!-- Recuadro de ejemplo -->
+  <div class="etiqueta" id="etiqueta1">
+    <div class="recuadro">☐</div>
+    <div class="acciones">
+      <button class="boton-opcion" data-valor="En revisión">En revisión</button>
+      <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
+      <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
+    </div>
+  </div>
 
-<div id="etiqueta1" class="etiqueta">
-    <div class="recuadro">☐</div> Refacción 1
-    <button class="boton-opcion" data-valor="Estratégico">Estratégico</button>
-    <button class="boton-opcion" data-valor="No estratégico">No estratégico</button>
-    <button class="boton-opcion" data-valor="Obsoleto">Obsoleto</button>
-    <button class="boton-opcion" data-valor="En revisión">En revisión</button>
-</div>
+  <div class="etiqueta" id="etiqueta2">
+    <div class="recuadro">☐</div>
+    <div class="acciones">
+      <button class="boton-opcion" data-valor="En revisión">En revisión</button>
+      <button class="boton-opcion" data-valor="Aprobado">Aprobado</button>
+      <button class="boton-opcion" data-valor="Rechazado">Rechazado</button>
+    </div>
+  </div>
 
-<div id="etiqueta2" class="etiqueta">
-    <div class="recuadro">☐</div> Refacción 2
-    <button class="boton-opcion" data-valor="Estratégico">Estratégico</button>
-    <button class="boton-opcion" data-valor="No estratégico">No estratégico</button>
-    <button class="boton-opcion" data-valor="Obsoleto">Obsoleto</button>
-    <button class="boton-opcion" data-valor="En revisión">En revisión</button>
-</div>
-
-<!-- SDK modular de Firebase -->
-<script type="module" src="checkjava.js"></script>
-
+  <script type="module" src="app.js"></script>
 </body>
 </html>
