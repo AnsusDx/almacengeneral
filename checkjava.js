@@ -25,7 +25,7 @@ function actualizarEstado(idEtiqueta, nuevoTexto) {
     const estadoDiv = etiqueta.querySelector('.estado-etiqueta');
 
     if (nuevoTexto === "En revisión") {
-        recuadro.textContent = '☐ En revisión';
+        recuadro.textContent = '☑ Estratégico';
         recuadro.classList.remove('checked');
     } else {
         recuadro.textContent = `☑ ${nuevoTexto}`;
@@ -118,3 +118,4 @@ window.onload = () => {
     cargarEstados();
     inicializarMenus();
 };
+
